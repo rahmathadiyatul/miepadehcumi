@@ -1,22 +1,38 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material"
-//import Header from "../header/page"
+import { Box, Card, CardContent, CardMedia, Fade, Typography } from "@mui/material"
 import { MenuCard, menuData } from "../../database/page"
 
 const menuCategory = menuData.navMain
 
 export default function Menu() {
     const categoryRefs = useRef(menuCategory.map(() => React.createRef<HTMLDivElement>()))
+    const footerRefs = useRef(menuCategory.map(() => React.createRef<HTMLDivElement>()))
+    const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
+    const [quantities, setQuantities] = useState<{ [key: string]: number }>({})
     const [openCard, setOpenCard] = useState<boolean>(false)
-    const [selectedCategory, setSelectedCategory] = useState<string>(() => {
-        return menuCategory?.[0]?.title ?? ""
-    })
     const [selectedMenu, setSelectedMenu] = useState<MenuCard>()
     const [openOutletList, setOpenOutletList] = useState<boolean>(false)
     const [openOrderList, setOpenOrderList] = useState<boolean>(false)
     const [selectedOutlet, setSelectedOutlet] = useState<string>("")
+    const [selectedCategory, setSelectedCategory] = useState<string>(() => {
+        return menuCategory?.[0]?.title ?? ""
+    })
+
+    const increaseQuantity = (id: string) => {
+        setQuantities((prev) => ({
+            ...prev,
+            [id]: (prev[id] || 0) + 1,
+        }))
+    }
+
+    const decreaseQuantity = (id: string) => {
+        setQuantities((prev) => ({
+            ...prev,
+            [id]: Math.max((prev[id] || 0) - 1, 0),
+        }))
+    }
 
     const handleScrollToCategory = (categoryName: string, index: number) => {
         if (categoryRefs.current[index]?.current) {
@@ -74,74 +90,61 @@ export default function Menu() {
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank")
     }
 
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5,
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = categoryRefs.current.findIndex((ref) => ref.current === entry.target)
+                    if (index !== -1) {
+                        setSelectedCategory(menuCategory[index].title)
+                    }
+                }
+            })
+        }, observerOptions)
+
+        categoryRefs.current.forEach((ref) => {
+            if (ref.current) {
+                observer.observe(ref.current)
+            }
+        })
+
+        return () => {
+            categoryRefs.current.forEach((ref) => {
+                if (ref.current) {
+                    observer.unobserve(ref.current)
+                }
+            })
+        }
+    }, [])
+
+    useEffect(() => {
+        const index = menuCategory.findIndex((cat) => cat.title === selectedCategory)
+        if (index !== -1 && footerRefs.current[index]?.current) {
+            footerRefs.current[index].current.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest',
+            })
+        }
+    }, [selectedCategory])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowBackToTop(window.scrollY > 200)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     return (
-        <Box sx={{ width: "100%", minHeight: "200vh", bgcolor: "white", display: "flex", flexDirection: { xs: "column", md: "row" } }}>
-            {/* <Header /> */}
-            <Box
-                sx={{
-                    display: { xs: "flex", md: "none" },
-                    flexDirection: "row",
-                    overflowX: "auto",
-                    whiteSpace: "nowrap",
-                    padding: ".5rem 1.25rem",
-                    gap: 2,
-                    position: "sticky",
-                    top: 0,
-                    backgroundColor: "#b82828",
-                    zIndex: 10,
-                }}
-            >
-                {(menuCategory ?? []).map((menu, index) => (
-                    <Typography
-                        onClick={() => handleScrollToCategory(menu.title, index)}
-                        sx={{
-                            color: "#fae89f",
-                            fontWeight: menu.title === selectedCategory ? "bolder" : 350,
-                            cursor: "pointer",
-                            borderBottom: menu.title === selectedCategory ? "2px solid #fae89f" : "none"
-                        }}
-                        key={index}
-                    >
-                        {menu.title}
-                    </Typography>
-                ))}
-            </Box>
-            {/* <Box
-                    sx={{
-                        display: { xs: "none", md: "block" },
-                        width: "30%",
-                        textAlign: "right",
-                        pt: "2%",
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                    }}
-                >
-                    {(menuCategory ?? []).map((menu, index) => (
-                        <Typography
-                            key={index}
-                            sx={{
-                                color: menu.title == selectedCategory ? "white" : "#c72026",
-                                backgroundColor: menu.title == selectedCategory ? "#c72026" : "white",
-                                borderRadius: ".5rem",
-                                cursor: "pointer",
-                                mb: .5,
-                                pr: "1rem",
-                                '&:hover, &:focus': {
-                                    color: menu.title == selectedCategory ? "white" : "#c72026",
-                                    backgroundColor: menu.title == selectedCategory ? "#c72026" : "rgba(0,0,0,.08)",
-                                },
-                            }}
-                            color="#c72026"
-                            lineHeight="3.5rem"
-                            fontSize="1.5rem"
-                            fontWeight="bolder"
-                            onClick={() => handleScrollToCategory(menu.title, index)}
-                        >
-                            {menu.title}
-                        </Typography>
-                    ))}
-                </Box> */}
+        <Box sx={{ pt: '4rem', position: 'relative', width: "100%", bgcolor: "white", display: "flex", flexDirection: { xs: "column", md: "row" } }}>
             <Box sx={{ mb: "10%", ml: 2, mt: 1 }}>
                 {(menuCategory ?? []).map((category, index) => (
                     <Box key={index} ref={categoryRefs.current[index]} sx={{ mb: 4, scrollMarginTop: { xs: "7vh", md: 0 } }}>
@@ -181,6 +184,65 @@ export default function Menu() {
                             ))}
                         </Box>
                     </Box>
+                ))}
+            </Box>
+            {showBackToTop && (
+                <Fade in={showBackToTop}>
+                    <Box
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                        tabIndex={0}
+                        sx={{
+                            position: "fixed",
+                            bottom: "4.5rem",
+                            right: "1rem",
+                            zIndex: 20,
+                            backgroundColor: "#b82828",
+                            color: "#fae89f",
+                            padding: "0.5rem 0.75rem",
+                            borderRadius: "999px",
+                            fontWeight: "bold",
+                            fontSize: "0.875rem",
+                            cursor: "pointer",
+                            transition: "all 0.7s ease-in-out",
+                            transform: showBackToTop ? "translateY(0)" : "translateY(20px)",
+                            ":hover, :focus, :active": {
+                                opacity: 1,
+                            },
+                        }}
+                    >
+                        ↑ Top
+                    </Box>
+                </Fade>
+            )}
+            <Box
+                sx={{
+                    display: { xs: "flex", md: "none" },
+                    flexDirection: "row",
+                    overflowX: "auto",
+                    whiteSpace: "nowrap",
+                    padding: ".5rem 1.25rem",
+                    gap: 2,
+                    position: "fixed",
+                    bottom: 0,
+                    width: "100vw",
+                    backgroundColor: "#b82828",
+                    zIndex: 10,
+                }}
+            >
+                {(menuCategory ?? []).map((menu, index) => (
+                    <Typography
+                        ref={footerRefs.current[index]}
+                        onClick={() => handleScrollToCategory(menu.title, index)}
+                        sx={{
+                            color: "#fae89f",
+                            fontWeight: menu.title === selectedCategory ? "bolder" : 350,
+                            cursor: "pointer",
+                            borderBottom: menu.title === selectedCategory ? "2px solid #fae89f" : "none"
+                        }}
+                        key={index}
+                    >
+                        {menu.title}
+                    </Typography>
                 ))}
             </Box>
         </Box >
