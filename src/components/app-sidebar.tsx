@@ -15,6 +15,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { menuData } from "@/database/page"
+import Image from "next/image"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [openMenus, setOpenMenus] = React.useState<Record<string, boolean>>({})
@@ -32,7 +33,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton className="hover:bg-[#b82828] hover:text-[#fae89f]" size="lg" asChild>
               <a href="#">
-                <img src="/logo.png" alt="Logo" className="size-10" />
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                  priority
+                />
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="text-base font-bold text-[#fae89f]">Mie Padeh Cumi</span>
                   <span className="texl-2xs text-[#fae89f]">Batu Gadang - Solok</span>

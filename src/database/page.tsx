@@ -2,10 +2,21 @@ export interface MenuCard {
     title: string,
     price: number,
     description: string,
+    url?: string,
+    isActive?: true,
+}
+
+export interface MenuCategory {
+    title: string,
+    items: MenuCard[]
     url?: string
 }
 
-export const menuData = {
+export interface MenuData {
+    navMain: MenuCategory[]
+}
+
+export const menuData: MenuData = {
     navMain: [
         {
             title: "Mie Padeh",
@@ -15,31 +26,31 @@ export const menuData = {
                     title: "Mie Udang Saus Padang",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Mie Original",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Mie Nyemek",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Mie Cumi Saus Padang",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Mie Mix Seafood",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -51,38 +62,38 @@ export const menuData = {
                     title: "Ayam Geprek",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ayam Geprek Mentai",
                     url: "#",
                     isActive: true,
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ayam Selimut Telur",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ayam Penyet",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chicken Katsu",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ayam Geprek Mozzarella",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -94,19 +105,19 @@ export const menuData = {
                     title: "Ayam Saus Pedas Manis",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chicken Katsu Teriyaki",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chicken Steak Crispy",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -118,13 +129,13 @@ export const menuData = {
                     title: "Nasi Putih",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nasi Daun Jeruk",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -136,61 +147,61 @@ export const menuData = {
                     title: "Paket Seafood Satuan",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Paket Seafood 1",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Paket Seafood 2",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Paket Seafood 3",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Paket Seafood 4",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Cumi Bakar",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kerang Bakar",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kerang Bakar Mozzarella ",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Udang Bakar",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Udang Bakar Mozzarella",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -202,25 +213,25 @@ export const menuData = {
                     title: "Nasi Goreng Original",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nasi Goreng Seafood",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nasi Goreng Ijo Teri",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nasi Goreng Pete",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -232,19 +243,19 @@ export const menuData = {
                     title: "Ekstra Sambal Bawang",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ekstra Sambal Java",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Ekstra Sambal Matah",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -256,67 +267,67 @@ export const menuData = {
                     title: "Tempe Mendoan",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Sosis Goreng",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nugget Goreng",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pisang Naga Coklat Lava",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Special Mix",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kentang Goreng",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Tahu Cabe Garam",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Piscok Lumer",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pisang Coklat Keju Lumpia",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kerupuk",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pisang Naga Fla Durian",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -328,19 +339,19 @@ export const menuData = {
                     title: "Ice Cream",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Pisang",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Pisang Ice Cream",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -352,37 +363,37 @@ export const menuData = {
                     title: "Kopi Hitam Tubruk",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kopi Susu Tubruk",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Susu Dingin",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Teh",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Teh Susu",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Kosong",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -394,25 +405,25 @@ export const menuData = {
                     title: "Americano",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Kopi Susu",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Kopi Susu Gula Aren",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Es Kopi Soda",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -424,31 +435,31 @@ export const menuData = {
                     title: "Jeruk Peras",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Jus Mangga",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Jus Naga",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Jus Tomat",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Jus Alpukat",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -460,55 +471,55 @@ export const menuData = {
                     title: "Fanta Susu",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nutrisari",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Lemon Tea",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Cappuccino",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Milo",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chocolatos",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Good Day",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pop Ice",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Hilo",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
@@ -520,49 +531,49 @@ export const menuData = {
                     title: "Nutrisari Yakult",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Nutrisari Mojito",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pop Ice Milky",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Pop Ice Komplit",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chocolatos Milky",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Chocolatos Komplit",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Cappuccino Cincau",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
                 {
                     title: "Cappuccino Komplit",
                     url: "#",
                     price: 0,
-                    description: ""
+                    description: "Deskripsi pendek makanan"
                 },
             ],
         },
