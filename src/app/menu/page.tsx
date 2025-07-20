@@ -1,5 +1,5 @@
-export const dynamic = 'force-dynamic'
 "use client"
+export const dynamic = 'force-dynamic'
 
 import React, { useEffect, useRef, useState, createRef } from "react"
 import { Autocomplete, Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
