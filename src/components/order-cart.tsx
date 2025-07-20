@@ -11,7 +11,7 @@ import {
     Button
 } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { OrderData } from "@/app/menu/page"
+import { OrderData } from "@/app/menu/MenuClient"
 
 interface OrderCartProps {
     orderData: OrderData

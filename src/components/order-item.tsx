@@ -3,8 +3,8 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react"
 import { MenuCard } from "@/database/page"
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField, Typography } from "@mui/material"
-import { OrderData } from "@/app/menu/page"
 import { useSearchParams } from "next/navigation"
+import { OrderData } from "@/app/menu/MenuClient"
 
 export interface ItemOrderDialogProps {
     openOrderModal: boolean
