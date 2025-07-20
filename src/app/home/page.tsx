@@ -1,21 +1,23 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import MenuDetails from "../menu/page"
+
+const MenuDetails = dynamic(() => import("../menu/page"), {
+  ssr: false,
+  loading: () => <div>Loading menu…</div>,
+})
 
 export default function Page() {
   return (

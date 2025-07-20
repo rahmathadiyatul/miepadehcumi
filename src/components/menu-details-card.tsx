@@ -2,8 +2,8 @@
 
 import { MenuCard } from "@/database/page"
 import { Close, LocalGroceryStore } from "@mui/icons-material"
-import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material"
-import React, { useState } from "react"
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material"
+import React from "react"
 
 interface CardDetailsProps {
     onClose: () => void
