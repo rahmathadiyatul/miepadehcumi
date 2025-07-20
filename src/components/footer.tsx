@@ -1,3 +1,5 @@
+"use client"
+
 import { MenuCategory } from "@/database/page"
 import { Box, Typography } from "@mui/material"
 import { RefObject } from "react"

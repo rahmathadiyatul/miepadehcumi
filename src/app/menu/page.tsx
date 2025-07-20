@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation"
 import Footer from "@/components/footer"
 import ToTopButton from "@/components/to-top-button"
 import ItemOrderDialog from "@/components/order-item"
+import OrderCart from "@/components/order-cart"
 
 export type OrderData = {
     quantities: Record<string, number>
@@ -47,7 +48,7 @@ export default function Menu() {
     const [orderData, setOrderData] = useState<OrderData>({
         quantities: {},
         notes: {},
-        tableNumber: searchParams.get("tableNo") || "01",
+        tableNumber: tableNumber,
     })
 
     const handleOpenOrderModal = (menu: MenuCard) => {
@@ -70,7 +71,7 @@ export default function Menu() {
     }
 
     const handleWhatsAppClick = () => {
-        const phoneNumber = "6285922081818"
+        const phoneNumber = "6282268048022"
         const { quantities, notes, tableNumber } = orderData
 
         let message = `*Mie Padeh Cumi Solok Order*\n*Nomor Meja: ${tableNumber}*`
@@ -89,21 +90,26 @@ export default function Menu() {
         window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank")
     }
 
-    const handleConfirmOrder = () => {
-        // This can call handleWhatsAppClick later
-    }
-
     useEffect(() => {
         if (activeMenuItem) {
             setOpenOrderModal(true)
         }
     }, [activeMenuItem])
 
-    // useEffect(() => {
-    //     if (typeof window !== "undefined") {
-    //         sessionStorage.setItem("orderData", JSON.stringify(orderData))
-    //     }
-    // }, [orderData])
+    useEffect(() => {
+        const stored = sessionStorage.getItem('orderData')
+        if (stored) {
+            try {
+                setOrderData(JSON.parse(stored))
+            } catch {
+                console.warn('Invalid orderData in sessionStorage')
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        sessionStorage.setItem('orderData', JSON.stringify(orderData))
+    }, [orderData])
 
     useEffect(() => {
         const observerOptions = {
@@ -157,8 +163,6 @@ export default function Menu() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
-
-    console.log(orderData)
 
     return (
         <Box sx={{ pt: '4rem', position: 'relative', width: "100%", bgcolor: "white", display: "flex", flexDirection: { xs: "column", md: "row" } }}>
@@ -313,6 +317,7 @@ export default function Menu() {
             {showBackToTop && (
                 <ToTopButton showBackToTop={showBackToTop} />
             )}
+            <OrderCart onSubmit={handleWhatsAppClick} orderData={orderData}></OrderCart>
             <Footer menuCategory={menuCategory} footerRefs={footerRefs} handleScrollToCategory={handleScrollToCategory} selectedCategory={selectedCategory}></Footer>
         </Box >
     )

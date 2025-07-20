@@ -30,7 +30,7 @@ export default function ItemOrderDialog({ openOrderModal, setOpenOrderModal, act
     const handleSaveOrderModal = (tempQuantity: number, tempNote: string) => {
         if (!activeMenuItem) return
 
-        setOrderData((prev) => {
+        setOrderData(prev => {
             const newQuantities = { ...prev.quantities }
             const newNotes = { ...prev.notes }
 
@@ -48,9 +48,7 @@ export default function ItemOrderDialog({ openOrderModal, setOpenOrderModal, act
                 notes: newNotes,
             }
         })
-
         setOpenOrderModal(false)
-        setActiveMenuItem(null)
     }
 
     useEffect(() => {
