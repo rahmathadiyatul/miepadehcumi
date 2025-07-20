@@ -67,7 +67,6 @@ export const menuData: MenuData = {
                 {
                     title: "Ayam Geprek Mentai",
                     url: "#",
-                    isActive: true,
                     price: 0,
                     description: "Deskripsi pendek makanan"
                 },

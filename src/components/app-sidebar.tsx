@@ -12,19 +12,31 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { menuData } from "@/database/page"
 import Image from "next/image"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [openMenus, setOpenMenus] = React.useState<Record<string, boolean>>({})
-
+  const { setSelectedMenuName, open, setOpen, openMobile, setOpenMobile, isMobile } = useSidebar()
   const toggleMenu = (title: string) => {
     setOpenMenus((prev) => ({
       ...prev,
       [title]: !prev[title],
     }))
   }
+
+  const handleClickSub = (menuName: string) => {
+    if (isMobile) {
+      setOpen(!open)
+      setOpenMobile(!openMobile)
+    } else {
+      setOpen(!open)
+    }
+    setSelectedMenuName(menuName)
+  }
+
   return (
     <Sidebar {...props} className="text-[#fae89f]">
       <SidebarHeader className="bg-[#b82828]">
@@ -54,7 +66,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {menuData.navMain.map((item) => {
               const hasChildren = item.items?.length
               const isOpen = openMenus[item.title]
-
               return (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
@@ -78,7 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   {hasChildren && isOpen && (
                     <SidebarMenuSub className="border-l-0">
                       {item.items.map((subitem) => (
-                        <SidebarMenuSubItem key={subitem.title}>
+                        <SidebarMenuSubItem key={subitem.title} onClick={() => handleClickSub(subitem.title)}>
                           <SidebarMenuSubButton
                             className="bg-[#b82828] hover:bg-[#991f1f]"
                             asChild

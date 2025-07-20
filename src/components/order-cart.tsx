@@ -15,10 +15,11 @@ import { OrderData } from "@/app/menu/MenuClient"
 
 interface OrderCartProps {
     orderData: OrderData
+    isMobile: boolean
     onSubmit: () => void
 }
 
-export default function OrderCart({ orderData, onSubmit }: OrderCartProps) {
+export default function OrderCart({ orderData, onSubmit, isMobile }: OrderCartProps) {
     const [open, setOpen] = useState(false)
 
     const items = Object.entries(orderData.quantities)
@@ -38,8 +39,9 @@ export default function OrderCart({ orderData, onSubmit }: OrderCartProps) {
                     display: 'flex',
                     alignItems: 'center',
                     position: "fixed",
-                    bottom: "4.5rem",
-                    left: "1rem",
+                    bottom: isMobile ? "4.5rem" : "2rem",
+                    left: isMobile ? "1rem" : "auto",
+                    right: isMobile ? "auto" : "1rem",
                     zIndex: 100,
                     bgcolor: "#b82828",
                     color: "#fae89f",

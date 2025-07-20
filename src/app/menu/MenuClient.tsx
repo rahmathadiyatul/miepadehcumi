@@ -8,6 +8,7 @@ import Footer from "@/components/footer"
 import ToTopButton from "@/components/to-top-button"
 import ItemOrderDialog from "@/components/order-item"
 import OrderCart from "@/components/order-cart"
+import { useSidebar } from "@/components/ui/sidebar"
 
 export type OrderData = {
     quantities: Record<string, number>
@@ -18,9 +19,11 @@ export type OrderData = {
 const menuCategory = menuData.navMain
 
 export default function MenuClient() {
+    const { openMobile, isMobile, selectedMenuName } = useSidebar()
     const searchParams = useSearchParams()
     const tableNumber = searchParams.get("tableNo") || "01"
     const categoryRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
+    const menuItemRefs = useRef(menuCategory.map(cat => cat.items.map(() => createRef<HTMLDivElement>())))
     const footerRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
     const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
     const [openOrderModal, setOpenOrderModal] = useState<boolean>(false)
@@ -65,6 +68,24 @@ export default function MenuClient() {
         }
     }
 
+    const handleScrollToMenuItem = (menuName: string) => {
+        for (let catIdx = 0; catIdx < menuCategory.length; catIdx++) {
+            const itemIdx = menuCategory[catIdx].items.findIndex(
+                (i) => i.title === menuName
+            )
+            if (itemIdx !== -1) {
+                setSelectedCategory(menuCategory[catIdx].title)
+                categoryRefs.current[catIdx]?.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                })
+                const ref = menuItemRefs.current[catIdx][itemIdx]
+                ref.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+                break
+            }
+        }
+    }
+
     const handleWhatsAppClick = () => {
         const phoneNumber = "6282268048022"
         const { quantities, notes, tableNumber } = orderData
@@ -80,7 +101,7 @@ export default function MenuClient() {
                 }
             }
         }
-
+        sessionStorage.clear()
         const encoded = encodeURIComponent(message)
         window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank")
     }
@@ -105,6 +126,10 @@ export default function MenuClient() {
     useEffect(() => {
         sessionStorage.setItem('orderData', JSON.stringify(orderData))
     }, [orderData])
+
+    useEffect(() => {
+        handleScrollToMenuItem(selectedMenuName)
+    }, [selectedMenuName])
 
     useEffect(() => {
         const observerOptions = {
@@ -312,7 +337,9 @@ export default function MenuClient() {
             {showBackToTop && (
                 <ToTopButton showBackToTop={showBackToTop} />
             )}
-            <OrderCart onSubmit={handleWhatsAppClick} orderData={orderData}></OrderCart>
+            {!openMobile && (
+                <OrderCart isMobile={isMobile} onSubmit={handleWhatsAppClick} orderData={orderData}></OrderCart>
+            )}
             <Footer menuCategory={menuCategory} footerRefs={footerRefs} handleScrollToCategory={handleScrollToCategory} selectedCategory={selectedCategory}></Footer>
         </Box >
     )
