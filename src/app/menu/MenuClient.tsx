@@ -203,6 +203,11 @@ export default function MenuClient() {
                     inputValue={searchText}
                     onInputChange={(_, value) => setSearchText(value)}
                     sx={{
+                        '& .MuiOutlinedInput-root': {
+                            position: 'fixed',
+                            width: '70%',
+                            alignSelf: 'center'
+                        },
                         '& .MuiOutlinedInput-root.MuiInputBase-sizeSmall': {
                             pt: 0,
                             pb: 0,
@@ -225,7 +230,7 @@ export default function MenuClient() {
                     )}
                 />
                 {(filteredCategories ?? []).map((category, index) => (
-                    <Box key={index} ref={categoryRefs.current[index]} sx={{ mb: 4, scrollMarginTop: { xs: "7vh", md: 0 } }}>
+                    <Box key={index} ref={categoryRefs.current[index]} sx={{ mt: 1, mb: 4, scrollMarginTop: { xs: "7vh", md: 0 } }}>
                         <Typography
                             textTransform="uppercase"
                             color="#b82828"
