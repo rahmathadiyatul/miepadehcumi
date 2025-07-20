@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState, createRef } from "react"
-import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
+import { Autocomplete, Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
 import { MenuCard, menuData } from "../../database/page"
 import { useSearchParams } from "next/navigation"
 import Footer from "@/components/footer"
@@ -24,9 +24,25 @@ export default function Menu() {
     const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
     const [openOrderModal, setOpenOrderModal] = useState<boolean>(false)
     const [activeMenuItem, setActiveMenuItem] = useState<MenuCard | null>(null)
+    const [searchText, setSearchText] = useState<string>('')
     const [selectedCategory, setSelectedCategory] = useState(() => {
         return menuCategory?.[0]?.title ?? ""
     })
+
+    const allTitles = menuCategory.flatMap(cat =>
+        cat.items.map(item => item.title)
+    )
+
+    const filteredCategories = searchText
+        ? menuCategory
+            .map(cat => ({
+                ...cat,
+                items: cat.items.filter(item =>
+                    item.title.toLowerCase().includes(searchText.toLowerCase())
+                )
+            }))
+            .filter(cat => cat.items.length > 0)
+        : menuCategory
 
     const [orderData, setOrderData] = useState<OrderData>({
         quantities: {},
@@ -142,6 +158,8 @@ export default function Menu() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
+    console.log(orderData)
+
     return (
         <Box sx={{ pt: '4rem', position: 'relative', width: "100%", bgcolor: "white", display: "flex", flexDirection: { xs: "column", md: "row" } }}>
             {openOrderModal && (
@@ -154,7 +172,35 @@ export default function Menu() {
                 />
             )}
             <Box sx={{ mb: "10%", mx: 2, mt: 1 }}>
-                {(menuCategory ?? []).map((category, index) => (
+                <Autocomplete
+                    freeSolo
+                    openOnFocus={false}
+                    options={allTitles}
+                    inputValue={searchText}
+                    onInputChange={(_, value) => setSearchText(value)}
+                    sx={{
+                        '& .MuiOutlinedInput-root.MuiInputBase-sizeSmall': {
+                            pt: 0,
+                            pb: 0,
+                            borderRadius: 5
+                        },
+                    }} filterOptions={(opts) =>
+                        searchText.length > 0
+                            ? opts.filter(o =>
+                                o.toLowerCase().includes(searchText.toLowerCase())
+                            )
+                            : []
+                    }
+                    renderInput={params => (
+                        <TextField
+                            {...params}
+                            placeholder="Cari menu..."
+                            size="small"
+                            sx={{ mb: 1 }}
+                        />
+                    )}
+                />
+                {(filteredCategories ?? []).map((category, index) => (
                     <Box key={index} ref={categoryRefs.current[index]} sx={{ mb: 4, scrollMarginTop: { xs: "7vh", md: 0 } }}>
                         <Typography
                             textTransform="uppercase"
@@ -169,7 +215,6 @@ export default function Menu() {
                         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
                             {(category.items ?? []).map((menu: MenuCard, idx: number) => (
                                 <Card
-                                    //onClick={() => onClickMenuDetails(menu)}
                                     key={idx}
                                     sx={{
                                         width: { xs: "100%", md: "48%" }, cursor: "pointer", ":hover": { boxShadow: 3 }, transition: "all 0.6s ease", borderRadius: "1rem", backgroundColor: "white", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"
