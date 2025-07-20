@@ -21,7 +21,6 @@ interface OrderCartProps {
 export default function OrderCart({ orderData, onSubmit }: OrderCartProps) {
     const [open, setOpen] = useState(false)
 
-    // ambil array item yang dipesan
     const items = Object.entries(orderData.quantities)
         .filter(([, qty]) => qty > 0)
         .map(([title, qty]) => ({
@@ -59,37 +58,68 @@ export default function OrderCart({ orderData, onSubmit }: OrderCartProps) {
                 </Typography>
             </Box>
 
-            <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="sm">
+            <Dialog
+                open={open}
+                onClose={() => setOpen(false)}
+                fullWidth
+                maxWidth="sm"
+                PaperProps={{
+                    sx: {
+                        borderRadius: '10px',
+                    },
+                }}
+            >
                 <DialogTitle
                     sx={{
                         backgroundColor: '#b82828',
                         color: '#fae89f',
-                        fontWeight: 'bold',
-                        borderRadius: '10px'
+                        borderRadius: '10px',
+                        px: 2,
+                        py: .5,
+                        fontSize: 18
                     }}
                 >
                     Daftar Pesanan
                 </DialogTitle>
-                <DialogContent dividers>
+                <DialogContent
+                    dividers
+                    sx={{
+                        px: 1.5,
+                        py: 0.25
+                    }}
+                >
+                    <Box
+                        sx={{
+                            display: "grid",
+                            gridTemplateColumns: "auto 1fr auto",
+                            alignItems: "left",
+                            gap: 2,
+                            mb: 1,
+                        }}
+                    >
+                        <Typography fontSize={13} fontWeight={600}>Qty</Typography>
+                        <Typography fontSize={13} fontWeight={600}>Nama Menu</Typography>
+                        <Typography fontSize={13} fontWeight={600}>Catatan</Typography>
+                    </Box>
                     {items.length > 0 ? (
                         items.map(item => (
                             <Box
                                 key={item.title}
                                 sx={{
                                     display: "grid",
-                                    gridTemplateColumns: "auto 1fr auto", // Qty | Judul | Note
+                                    gridTemplateColumns: "auto 1fr auto",
                                     alignItems: "center",
                                     gap: 2,
                                     mb: 1,
                                 }}
                             >
-                                <Typography fontWeight={700} textAlign="center">
+                                <Typography fontSize={12} textAlign="center">
                                     {item.qty}
                                 </Typography>
-                                <Typography fontWeight={700}>
+                                <Typography fontSize={12}>
                                     {item.title}
                                 </Typography>
-                                <Typography fontSize="0.875rem" color="text.secondary">
+                                <Typography fontSize={12} color="text.secondary">
                                     {item.note}
                                 </Typography>
                             </Box>
@@ -123,6 +153,7 @@ export default function OrderCart({ orderData, onSubmit }: OrderCartProps) {
                             backgroundColor: '#b82828',
                             color: '#fae89f',
                             borderRadius: '0.75rem',
+                            fontWeight: 'bold',
                             width: 100,
                             '&:hover': { backgroundColor: '#991f1f' },
                             '&:disabled': { backgroundColor: 'rgba(0,0,0,.1)' }
