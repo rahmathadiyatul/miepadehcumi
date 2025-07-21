@@ -13,31 +13,11 @@ export default function MenuEditorClient() {
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
     const [editItem, setEditItem] = useState<MenuCard | null>(null)
     const [openEdit, setOpenEdit] = useState(false)
-    console.log(menuCategory)
     const [searchText, setSearchText] = useState<string>('')
     const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
     const [selectedCategory, setSelectedCategory] = useState(() => {
         return menuCategory?.[0]?.title ?? ""
     })
-
-    function handleEditClick(item: MenuCard) {
-        setEditItem({ ...item })
-        setOpenEdit(true)
-    }
-
-    function handleSaveEdit() {
-        if (!editItem) return
-        setMenuCategory(cats =>
-            cats.map(cat => ({
-                ...cat,
-                items: cat.items.map(i =>
-                    i.title === editItem.title ? editItem : i
-                ),
-            }))
-        )
-        setOpenEdit(false)
-    }
-
     const footerRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
     const categoryRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
     const menuItemRefs = useRef(menuCategory.map(cat => cat.items.map(() => createRef<HTMLDivElement>())))
@@ -56,6 +36,24 @@ export default function MenuEditorClient() {
             : initialCats
         )
     }, [initialCats, searchText])
+
+    const handleEditClick = (item: MenuCard) => {
+        setEditItem({ ...item })
+        setOpenEdit(true)
+    }
+
+    const handleSaveEdit = () => {
+        if (!editItem) return
+        setMenuCategory(cats =>
+            cats.map(cat => ({
+                ...cat,
+                items: cat.items.map(i =>
+                    i.title === editItem.title ? editItem : i
+                ),
+            }))
+        )
+        setOpenEdit(false)
+    }
 
     const handleScrollToCategory = (categoryName: string, index: number) => {
         if (categoryRefs.current[index]?.current) {

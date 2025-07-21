@@ -8,31 +8,36 @@
                     "title": "Mie Udang Saus Padang",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Mie Original",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Mie Nyemek",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Mie Cumi Saus Padang",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Mie Mix Seafood",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -44,37 +49,43 @@
                     "title": "Ayam Geprek",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ayam Geprek Mentai",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ayam Selimut Telur",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ayam Penyet",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chicken Katsu",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ayam Geprek Mozzarella",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -86,19 +97,22 @@
                     "title": "Ayam Saus Pedas Manis",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chicken Katsu Teriyaki",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chicken Steak Crispy",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -110,13 +124,15 @@
                     "title": "Nasi Putih",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nasi Daun Jeruk",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -128,61 +144,71 @@
                     "title": "Paket Seafood Satuan",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Paket Seafood 1",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Paket Seafood 2",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Paket Seafood 3",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Paket Seafood 4",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Cumi Bakar",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kerang Bakar",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kerang Bakar Mozzarella ",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Udang Bakar",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Udang Bakar Mozzarella",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -194,25 +220,29 @@
                     "title": "Nasi Goreng Original",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nasi Goreng Seafood",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nasi Goreng Ijo Teri",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nasi Goreng Pete",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -224,19 +254,22 @@
                     "title": "Ekstra Sambal Bawang",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ekstra Sambal Java",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Ekstra Sambal Matah",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -248,67 +281,78 @@
                     "title": "Tempe Mendoan",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Sosis Goreng",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nugget Goreng",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pisang Naga Coklat Lava",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Special Mix",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kentang Goreng",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Tahu Cabe Garam",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Piscok Lumer",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pisang Coklat Keju Lumpia",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kerupuk",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pisang Naga Fla Durian",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -320,19 +364,22 @@
                     "title": "Ice Cream",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Pisang",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Pisang Ice Cream",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -344,37 +391,43 @@
                     "title": "Kopi Hitam Tubruk",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kopi Susu Tubruk",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Susu Dingin",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Teh",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Teh Susu",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Kosong",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -386,25 +439,29 @@
                     "title": "Americano",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Kopi Susu",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Kopi Susu Gula Aren",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Es Kopi Soda",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -416,31 +473,36 @@
                     "title": "Jeruk Peras",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Jus Mangga",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Jus Naga",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Jus Tomat",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Jus Alpukat",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -452,55 +514,64 @@
                     "title": "Fanta Susu",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nutrisari",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Lemon Tea",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Cappuccino",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Milo",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chocolatos",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Good Day",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pop Ice",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Hilo",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         },
@@ -512,49 +583,57 @@
                     "title": "Nutrisari Yakult",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Nutrisari Mojito",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pop Ice Milky",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Pop Ice Komplit",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chocolatos Milky",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Chocolatos Komplit",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Cappuccino Cincau",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 },
                 {
                     "title": "Cappuccino Komplit",
                     "url": "#",
                     "price": 0,
-                    "description": "Deskripsi pendek makanan"
+                    "description": "Deskripsi pendek makanan",
+                    "is_active": true
                 }
             ]
         }
