@@ -97,7 +97,7 @@ export default function MenuClient() {
                 const qty = quantities[item.title]
                 if (qty > 0) {
                     const note = notes[item.title]
-                    message += `\n- ${item.title} - ${qty}${note ? ` - ${note}` : ""}`
+                    message += `\n${qty} - ${item.title}${note ? ` - ${note}` : ""}`
                 }
             }
         }
