@@ -1,62 +1,61 @@
-"use client"
-
-import React, { useEffect, useRef, useState, createRef } from "react"
-import { Autocomplete, Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
-import { MenuCard, menuData } from "../../database/page"
-import { useSearchParams } from "next/navigation"
-import Footer from "@/components/footer"
-import ToTopButton from "@/components/to-top-button"
-import ItemOrderDialog from "@/components/order-item"
-import OrderCart from "@/components/order-cart"
-import { useSidebar } from "@/components/ui/sidebar"
+'use client'
+import { Autocomplete, Box, Button, Card, CardContent, CardMedia, Dialog, DialogTitle, DialogActions, DialogContent, TextField, Typography } from "@mui/material"
 import useMenuData from "../controller/useMenuData"
+import { createRef, useEffect, useMemo, useRef, useState } from "react"
+import { MenuCard, MenuCategory } from "@/database/page"
+import ToTopButton from "@/components/to-top-button"
+import Footer from "@/components/footer"
+import { useSidebar } from "@/components/ui/sidebar"
 
-export type OrderData = {
-    quantities: Record<string, number>
-    notes: Record<string, string>
-    tableNumber: string
-}
-
-export default function MenuClient() {
-    const { menuCategory } = useMenuData()
-    const { openMobile, isMobile, selectedMenuName } = useSidebar()
-    const searchParams = useSearchParams()
-    const tableNumber = searchParams.get("tableNo") || "01"
-    const categoryRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
-    const menuItemRefs = useRef(menuCategory.map(cat => cat.items.map(() => createRef<HTMLDivElement>())))
-    const footerRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
-    const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
-    const [openOrderModal, setOpenOrderModal] = useState<boolean>(false)
-    const [activeMenuItem, setActiveMenuItem] = useState<MenuCard | null>(null)
+export default function MenuEditorClient() {
+    const { selectedMenuName } = useSidebar()
+    const { menuCategory: initialCats } = useMenuData()
+    const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
+    const [editItem, setEditItem] = useState<MenuCard | null>(null)
+    const [openEdit, setOpenEdit] = useState(false)
+    console.log(menuCategory)
     const [searchText, setSearchText] = useState<string>('')
+    const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
     const [selectedCategory, setSelectedCategory] = useState(() => {
         return menuCategory?.[0]?.title ?? ""
     })
+
+    function handleEditClick(item: MenuCard) {
+        setEditItem({ ...item })
+        setOpenEdit(true)
+    }
+
+    function handleSaveEdit() {
+        if (!editItem) return
+        setMenuCategory(cats =>
+            cats.map(cat => ({
+                ...cat,
+                items: cat.items.map(i =>
+                    i.title === editItem.title ? editItem : i
+                ),
+            }))
+        )
+        setOpenEdit(false)
+    }
+
+    const footerRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
+    const categoryRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
+    const menuItemRefs = useRef(menuCategory.map(cat => cat.items.map(() => createRef<HTMLDivElement>())))
 
     const allTitles = menuCategory.flatMap(cat =>
         cat.items.map(item => item.title)
     )
 
-    const filteredCategories = searchText
-        ? menuCategory
-            .map(cat => ({
+    const filteredCategories = useMemo(() => {
+        return (searchText
+            ? initialCats.map(cat => ({
                 ...cat,
-                items: cat.items.filter(item =>
-                    item.title.toLowerCase().includes(searchText.toLowerCase())
-                )
+                items: cat.items.filter(i => i.title.toLowerCase().includes(searchText.toLowerCase()))
             }))
-            .filter(cat => cat.items.length > 0)
-        : menuCategory
-
-    const [orderData, setOrderData] = useState<OrderData>({
-        quantities: {},
-        notes: {},
-        tableNumber: tableNumber,
-    })
-
-    const handleOpenOrderModal = (menu: MenuCard) => {
-        setActiveMenuItem(menu)
-    }
+                .filter(cat => cat.items.length)
+            : initialCats
+        )
+    }, [initialCats, searchText])
 
     const handleScrollToCategory = (categoryName: string, index: number) => {
         if (categoryRefs.current[index]?.current) {
@@ -85,47 +84,6 @@ export default function MenuClient() {
             }
         }
     }
-
-    const handleWhatsAppClick = () => {
-        const phoneNumber = "6282268048022"
-        const { quantities, notes, tableNumber } = orderData
-
-        let message = `*Mie Padeh Cumi Solok Order*\n*Nomor Meja: ${tableNumber}*`
-
-        for (const category of menuCategory) {
-            for (const item of category.items) {
-                const qty = quantities[item.title]
-                if (qty > 0) {
-                    const note = notes[item.title]
-                    message += `\n${qty} - ${item.title}${note ? ` - ${note}` : ""}`
-                }
-            }
-        }
-        sessionStorage.clear()
-        const encoded = encodeURIComponent(message)
-        window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank")
-    }
-
-    useEffect(() => {
-        if (activeMenuItem) {
-            setOpenOrderModal(true)
-        }
-    }, [activeMenuItem])
-
-    useEffect(() => {
-        const stored = sessionStorage.getItem('orderData')
-        if (stored) {
-            try {
-                setOrderData(JSON.parse(stored))
-            } catch {
-                console.warn('Invalid orderData in sessionStorage')
-            }
-        }
-    }, [])
-
-    useEffect(() => {
-        sessionStorage.setItem('orderData', JSON.stringify(orderData))
-    }, [orderData])
 
     useEffect(() => {
         handleScrollToMenuItem(selectedMenuName)
@@ -184,17 +142,14 @@ export default function MenuClient() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
+    useEffect(() => {
+        if (initialCats.length) {
+            setMenuCategory(initialCats)
+        }
+    }, [initialCats])
+
     return (
         <Box sx={{ pt: '4rem', position: 'relative', width: "100%", bgcolor: "white", display: "flex", flexDirection: { xs: "column", md: "row" } }}>
-            {openOrderModal && (
-                <ItemOrderDialog
-                    openOrderModal={openOrderModal}
-                    setOpenOrderModal={setOpenOrderModal}
-                    activeMenuItem={activeMenuItem}
-                    setActiveMenuItem={setActiveMenuItem}
-                    setOrderData={setOrderData}
-                />
-            )}
             <Box sx={{ mb: "10%", mx: 2, mt: 1 }}>
                 <Autocomplete
                     freeSolo
@@ -274,45 +229,9 @@ export default function MenuClient() {
                                                 alignItems: 'flex-end'
                                             }}
                                         >
-                                            {(orderData.quantities[menu.title] > 0 || !!orderData.notes[menu.title]) && (
-                                                <Box
-                                                    sx={{
-                                                        display: "flex",
-                                                        flexDirection: "column",
-                                                        alignItems: "flex-end",
-                                                        justifyContent: "flex-start",
-                                                        minWidth: 60,
-                                                        height: "100%",
-                                                        py: 0.5,
-                                                    }}
-                                                >
-                                                    <Typography fontWeight={"bold"} fontSize={11} color="text.secondary">
-                                                        Qty: {orderData.quantities[menu.title] || 0}
-                                                    </Typography>
-                                                    {orderData.notes[menu.title] && (
-                                                        <Typography
-                                                            fontSize={10}
-                                                            fontWeight={"bold"}
-                                                            sx={{
-                                                                mt: 0.5,
-                                                                color: "gray",
-                                                                display: "-webkit-box",
-                                                                WebkitLineClamp: 2,
-                                                                WebkitBoxOrient: "vertical",
-                                                                overflow: "hidden",
-                                                                textOverflow: "ellipsis",
-                                                                textAlign: "right",
-                                                                maxWidth: 80,
-                                                            }}
-                                                        >
-                                                            {orderData.notes[menu.title]}
-                                                        </Typography>
-                                                    )}
-                                                </Box>
-                                            )}
                                             <Button
                                                 variant="contained"
-                                                onClick={() => handleOpenOrderModal(menu)}
+                                                onClick={() => handleEditClick(menu)}
                                                 sx={{
                                                     mt: 1,
                                                     width: "fit-content",
@@ -329,7 +248,7 @@ export default function MenuClient() {
                                                     }
                                                 }}
                                             >
-                                                Pilih
+                                                Ubah
                                             </Button>
                                         </Box>
                                     </CardContent>
@@ -339,11 +258,66 @@ export default function MenuClient() {
                     </Box>
                 ))}
             </Box>
+            <Dialog open={openEdit} onClose={() => setOpenEdit(false)} fullWidth>
+                <DialogTitle>Edit Menu Item</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        label="Nama"
+                        fullWidth
+                        margin="dense"
+                        value={editItem?.title || ""}
+                        onChange={e =>
+                            setEditItem(item =>
+                                item ? { ...item, title: e.target.value } : null
+                            )
+                        }
+                    />
+                    <TextField
+                        label="Harga"
+                        type="number"
+                        fullWidth
+                        margin="dense"
+                        value={editItem?.price ?? 0}
+                        onChange={e =>
+                            setEditItem(item =>
+                                item ? { ...item, price: Number(e.target.value) } : null
+                            )
+                        }
+                    />
+                    <TextField
+                        label="Deskripsi"
+                        multiline
+                        rows={3}
+                        fullWidth
+                        margin="dense"
+                        value={editItem?.description || ""}
+                        onChange={e =>
+                            setEditItem(item =>
+                                item ? { ...item, description: e.target.value } : null
+                            )
+                        }
+                    />
+                    <TextField
+                        label="URL Gambar"
+                        fullWidth
+                        margin="dense"
+                        value={editItem?.url || ""}
+                        onChange={e =>
+                            setEditItem(item =>
+                                item ? { ...item, url: e.target.value } : null
+                            )
+                        }
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpenEdit(false)}>Batal</Button>
+                    <Button variant="contained" onClick={handleSaveEdit}>
+                        Simpan
+                    </Button>
+                </DialogActions>
+            </Dialog>
             {showBackToTop && (
                 <ToTopButton showBackToTop={showBackToTop} />
-            )}
-            {!openMobile && (
-                <OrderCart isMobile={isMobile} onSubmit={handleWhatsAppClick} orderData={orderData}></OrderCart>
             )}
             <Footer menuCategory={menuCategory} footerRefs={footerRefs} handleScrollToCategory={handleScrollToCategory} selectedCategory={selectedCategory}></Footer>
         </Box >
