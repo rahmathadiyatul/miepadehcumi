@@ -104,7 +104,7 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
                             mb: 1,
                         }}
                     >
-                        <Typography fontSize='normal'>Apakah <b>ICA</b> yakin dengan perubahan yang sudah dibuat? Tekan 'YAKIN TUAN' jika sudah yakin. Tekan batal untuk kembali edit data</Typography>
+                        <Typography fontSize='normal'>Apakah <b>ICA</b> yakin dengan perubahan yang sudah dibuat? Tekan <b>YAKIN TUAN</b> jika sudah yakin. Tekan batal untuk kembali edit data</Typography>
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{ px: 3, pb: 2 }}>

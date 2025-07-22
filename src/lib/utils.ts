@@ -33,7 +33,7 @@ export async function updateMenuFile(navMain: MenuCategory[]) {
     path: FILE_PATH,
     message: "chore: update menu.json via UI",
     content,
-    // @ts-ignore: GitHubContentResponse has `sha`
+    // @ts-expect-error GitHubContentResponse has `sha`
     sha: file.sha,
     branch: BRANCH
   })
