@@ -1,562 +1,720 @@
 {
-    "navMain": [
+  "navMain": [
+    {
+      "title": "Mie Padeh",
+      "url": "#",
+      "items": [
         {
-            "title": "Mie Padeh",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Mie Udang Saus Padang",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Mie Original",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Mie Nyemek",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Mie Cumi Saus Padang",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Mie Mix Seafood",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
+          "menuId": 1,
+          "title": "Mie Udang Saus Padang",
+          "url": "#",
+          "price": 10000,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
         },
         {
-            "title": "Aneka Ayam",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Ayam Geprek",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ayam Geprek Mentai",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ayam Selimut Telur",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ayam Penyet",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chicken Katsu",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ayam Geprek Mozzarella",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
+          "menuId": 2,
+          "title": "Mie Original",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
         },
         {
-            "title": "Aneka Ayam Saus",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Ayam Saus Pedas Manis",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chicken Katsu Teriyaki",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chicken Steak Crispy",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
+          "menuId": 3,
+          "title": "Mie Nyemek",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
         },
         {
-            "title": "Aneka Nasi",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Nasi Putih",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nasi Daun Jeruk",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
+          "menuId": 4,
+          "title": "Mie Cumi Saus Padang",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
         },
         {
-            "title": "Aneka Seafood",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Paket Seafood Satuan",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Paket Seafood 1",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Paket Seafood 2",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Paket Seafood 3",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Paket Seafood 4",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Cumi Bakar",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kerang Bakar",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kerang Bakar Mozzarella ",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Udang Bakar",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Udang Bakar Mozzarella",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Nasi Goreng",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Nasi Goreng Original",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nasi Goreng Seafood",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nasi Goreng Ijo Teri",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nasi Goreng Pete",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Ekstra Sambal",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Ekstra Sambal Bawang",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ekstra Sambal Java",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Ekstra Sambal Matah",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Cemilan",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Tempe Mendoan",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Sosis Goreng",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nugget Goreng",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pisang Naga Coklat Lava",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Special Mix",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kentang Goreng",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Tahu Cabe Garam",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Piscok Lumer",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pisang Coklat Keju Lumpia",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kerupuk",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pisang Naga Fla Durian",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Ice Dessert",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Ice Cream",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Pisang",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Pisang Ice Cream",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Minuman Jadul",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Kopi Hitam Tubruk",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kopi Susu Tubruk",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Susu Dingin",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Teh",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Teh Susu",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Kosong",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Minuman Nescafe Series",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Americano",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Kopi Susu",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Kopi Susu Gula Aren",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Es Kopi Soda",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Minuman Jus",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Jeruk Peras",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Jus Mangga",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Jus Naga",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Jus Tomat",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Jus Alpukat",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Minuman Instan Drink",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Fanta Susu",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nutrisari",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Lemon Tea",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Cappuccino",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Milo",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chocolatos",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Good Day",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pop Ice",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Hilo",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
-        },
-        {
-            "title": "Aneka Minuman Next Level",
-            "url": "#",
-            "items": [
-                {
-                    "title": "Nutrisari Yakult",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Nutrisari Mojito",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pop Ice Milky",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Pop Ice Komplit",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chocolatos Milky",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Chocolatos Komplit",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Cappuccino Cincau",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                },
-                {
-                    "title": "Cappuccino Komplit",
-                    "url": "#",
-                    "price": 0,
-                    "description": "Deskripsi pendek makanan"
-                }
-            ]
+          "menuId": 5,
+          "title": "Mie Mix Seafood",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
         }
-    ]
+      ]
+    },
+    {
+      "title": "Aneka Ayam",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 6,
+          "title": "Ayam Geprek",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 7,
+          "title": "Ayam Geprek Mentai",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 8,
+          "title": "Ayam Selimut Telur",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 9,
+          "title": "Ayam Penyet",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 10,
+          "title": "Chicken Katsu",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 11,
+          "title": "Ayam Geprek Mozzarella",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Ayam Saus",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 12,
+          "title": "Ayam Saus Pedas Manis",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 13,
+          "title": "Chicken Katsu Teriyaki",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 14,
+          "title": "Chicken Steak Crispy",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Nasi",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 15,
+          "title": "Nasi Putih",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 16,
+          "title": "Nasi Daun Jeruk",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Seafood",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 17,
+          "title": "Paket Seafood Satuan",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 18,
+          "title": "Paket Seafood 1",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 19,
+          "title": "Paket Seafood 2",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 20,
+          "title": "Paket Seafood 3",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 21,
+          "title": "Paket Seafood 4",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 22,
+          "title": "Cumi Bakar",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 23,
+          "title": "Kerang Bakar",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 24,
+          "title": "Kerang Bakar Mozzarella ",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 25,
+          "title": "Udang Bakar",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 26,
+          "title": "Udang Bakar Mozzarella",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Nasi Goreng",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 27,
+          "title": "Nasi Goreng Original",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 28,
+          "title": "Nasi Goreng Seafood",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 29,
+          "title": "Nasi Goreng Ijo Teri",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 30,
+          "title": "Nasi Goreng Pete",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Ekstra Sambal",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 31,
+          "title": "Ekstra Sambal Bawang",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 32,
+          "title": "Ekstra Sambal Java",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 33,
+          "title": "Ekstra Sambal Matah",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Cemilan",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 34,
+          "title": "Tempe Mendoan",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 35,
+          "title": "Sosis Goreng",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 36,
+          "title": "Nugget Goreng",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 37,
+          "title": "Pisang Naga Coklat Lava",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 38,
+          "title": "Special Mix",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 39,
+          "title": "Kentang Goreng",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 40,
+          "title": "Tahu Cabe Garam",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 41,
+          "title": "Piscok Lumer",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 42,
+          "title": "Pisang Coklat Keju Lumpia",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 43,
+          "title": "Kerupuk",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 44,
+          "title": "Pisang Naga Fla Durian",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Ice Dessert",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 45,
+          "title": "Ice Cream",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 46,
+          "title": "Es Pisang",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 47,
+          "title": "Es Pisang Ice Cream",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Minuman Jadul",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 48,
+          "title": "Kopi Hitam Tubruk",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 49,
+          "title": "Kopi Susu Tubruk",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 50,
+          "title": "Susu Dingin",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 51,
+          "title": "Es Teh",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 52,
+          "title": "Es Teh Susu",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 53,
+          "title": "Es Kosong",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Minuman Nescafe Series",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 54,
+          "title": "Americano",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 55,
+          "title": "Es Kopi Susu",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 56,
+          "title": "Kopi Susu Gula Aren",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 57,
+          "title": "Es Kopi Soda",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Minuman Jus",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 58,
+          "title": "Jeruk Peras",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 59,
+          "title": "Jus Mangga",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 60,
+          "title": "Jus Naga",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 61,
+          "title": "Jus Tomat",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 62,
+          "title": "Jus Alpukat",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Minuman Instan Drink",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 63,
+          "title": "Fanta Susu",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 64,
+          "title": "Nutrisari",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 65,
+          "title": "Lemon Tea",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 66,
+          "title": "Cappuccino",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 67,
+          "title": "Milo",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 68,
+          "title": "Chocolatos",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 69,
+          "title": "Good Day",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 70,
+          "title": "Pop Ice",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 71,
+          "title": "Hilo",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "title": "Aneka Minuman Next Level",
+      "url": "#",
+      "items": [
+        {
+          "menuId": 72,
+          "title": "Nutrisari Yakult",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 73,
+          "title": "Nutrisari Mojito",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 74,
+          "title": "Pop Ice Milky",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 75,
+          "title": "Pop Ice Komplit",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 76,
+          "title": "Chocolatos Milky",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 77,
+          "title": "Chocolatos Komplit",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 78,
+          "title": "Cappuccino Cincau",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        },
+        {
+          "menuId": 79,
+          "title": "Cappuccino Komplit",
+          "url": "#",
+          "price": 0,
+          "description": "Deskripsi pendek makanan",
+          "is_active": true
+        }
+      ]
+    }
+  ]
 }
