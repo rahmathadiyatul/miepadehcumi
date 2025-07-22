@@ -64,25 +64,6 @@ export default function ItemOrderDialog({ openOrderModal, setOpenOrderModal, act
         }
     }, [])
 
-    // useEffect(() => {
-    //     if (typeof window === "undefined") return
-
-    //     try {
-    //         const stored = sessionStorage.getItem("orderData")
-    //         if (stored) {
-    //             const parsed = JSON.parse(stored)
-    //             setOrderData((prev) => ({
-    //                 ...prev,
-    //                 ...parsed,
-    //                 tableNumber: searchParams.get("tableNo") || parsed.tableNumber || "01",
-    //             }))
-    //         }
-    //     } catch (err) {
-    //         console.warn("Failed to parse session orderData:", err)
-    //     } finally {
-    //         setHydrated(true)
-    //     }
-    // }, [searchParams])
     return (
         <Dialog
             open={openOrderModal}

@@ -14,10 +14,11 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { menuData } from "@/database/page"
 import Image from "next/image"
+import useMenuData from "@/app/controller/useMenuData"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { menuCategory } = useMenuData()
   const [openMenus, setOpenMenus] = React.useState<Record<string, boolean>>({})
   const { setSelectedMenuName, open, setOpen, openMobile, setOpenMobile, isMobile } = useSidebar()
   const toggleMenu = (title: string) => {
@@ -63,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className="bg-[#b82828]">
         <SidebarGroup>
           <SidebarMenu>
-            {menuData.navMain.map((item) => {
+            {menuCategory.map((item) => {
               const hasChildren = item.items?.length
               const isOpen = openMenus[item.title]
               return (

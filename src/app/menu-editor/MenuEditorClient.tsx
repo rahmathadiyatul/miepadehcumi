@@ -1,15 +1,17 @@
 'use client'
-import { Autocomplete, Box, Button, Card, CardContent, CardMedia, Dialog, DialogTitle, DialogActions, DialogContent, TextField, Typography } from "@mui/material"
+import { Autocomplete, Box, Button, Card, CardContent, CardMedia, Dialog, DialogTitle, DialogActions, DialogContent, TextField, Typography, FormControlLabel, Switch } from "@mui/material"
 import useMenuData from "../controller/useMenuData"
 import { createRef, useEffect, useMemo, useRef, useState } from "react"
 import { MenuCard, MenuCategory } from "@/database/page"
 import ToTopButton from "@/components/to-top-button"
 import Footer from "@/components/footer"
 import { useSidebar } from "@/components/ui/sidebar"
+import { Cancel, CheckCircle } from "@mui/icons-material"
+import SubmitMenuUpdate from "@/components/submit-menu-update"
 
 export default function MenuEditorClient() {
-    const { selectedMenuName } = useSidebar()
-    const { menuCategory: initialCats } = useMenuData()
+    const { selectedMenuName, isMobile } = useSidebar()
+    const { menuCategory: initialCats, setMenuTrigger, menuTrigger } = useMenuData()
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
     const [editItem, setEditItem] = useState<MenuCard | null>(null)
     const [openEdit, setOpenEdit] = useState(false)
@@ -44,14 +46,20 @@ export default function MenuEditorClient() {
 
     const handleSaveEdit = () => {
         if (!editItem) return
-        setMenuCategory(cats =>
-            cats.map(cat => ({
+
+        setMenuCategory(prevCats => {
+            const updatedCats = prevCats.map(cat => ({
                 ...cat,
-                items: cat.items.map(i =>
-                    i.title === editItem.title ? editItem : i
+                items: cat.items.map(item =>
+                    item.menuId === editItem.menuId ? editItem : item
                 ),
             }))
-        )
+
+            localStorage.setItem("menuCategory", JSON.stringify(updatedCats))
+
+            return updatedCats
+        })
+        setMenuTrigger(!menuTrigger)
         setOpenEdit(false)
     }
 
@@ -223,10 +231,34 @@ export default function MenuEditorClient() {
                                             sx={{
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                justifyContent: 'flex-end',
+                                                justifyContent: 'space-between',
                                                 alignItems: 'flex-end'
                                             }}
                                         >
+                                            <Typography
+                                                fontSize={10.5}
+                                                sx={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: 0.5,
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    whiteSpace: "nowrap",
+                                                    fontWeight: 'bold'
+                                                }}
+                                            >
+                                                {menu.is_active ? (
+                                                    <>
+                                                        Active
+                                                        <CheckCircle sx={{ fontSize: 12 }} color="success" />
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        Inactive
+                                                        <Cancel sx={{ fontSize: 12 }} color="error" />
+                                                    </>
+                                                )}
+                                            </Typography>
                                             <Button
                                                 variant="contained"
                                                 onClick={() => handleEditClick(menu)}
@@ -256,8 +288,26 @@ export default function MenuEditorClient() {
                     </Box>
                 ))}
             </Box>
-            <Dialog open={openEdit} onClose={() => setOpenEdit(false)} fullWidth>
-                <DialogTitle>Edit Menu Item</DialogTitle>
+            <Dialog
+                open={openEdit}
+                onClose={() => setOpenEdit(false)}
+                fullWidth
+                maxWidth="sm"
+                PaperProps={{
+                    sx: {
+                        borderRadius: '10px',
+                        gap: 1
+                    },
+                }}
+            >
+                <DialogTitle
+                    sx={{
+                        backgroundColor: '#b82828',
+                        color: '#fae89f',
+                        borderRadius: '10px',
+                        fontSize: 18
+                    }}
+                >Edit Menu Item</DialogTitle>
                 <DialogContent>
                     <TextField
                         label="Nama"
@@ -306,17 +356,55 @@ export default function MenuEditorClient() {
                             )
                         }
                     />
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={editItem?.is_active ?? false}
+                                onChange={e =>
+                                    editItem && setEditItem({ ...editItem, is_active: e.target.checked })
+                                }
+                            />
+                        }
+                        label="Aktif"
+                        sx={{ mt: 1 }}
+                    />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpenEdit(false)}>Batal</Button>
-                    <Button variant="contained" onClick={handleSaveEdit}>
+                    <Button
+                        sx={{
+                            fontWeight: 'bold',
+                            color: '#991f1f',
+                            border: '.5px solid #991f1f',
+                            borderRadius: '0.75rem',
+                            width: 100
+                        }}
+                        onClick={() => setOpenEdit(false)}
+                    >
+                        Batal
+                    </Button>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            backgroundColor: '#b82828',
+                            color: '#fae89f',
+                            borderRadius: '0.75rem',
+                            fontWeight: 'bold',
+                            width: 100,
+                            '&:hover': { backgroundColor: '#991f1f' },
+                            '&:disabled': { backgroundColor: 'rgba(0,0,0,.1)' }
+                        }}
+                        onClick={handleSaveEdit}
+                    >
                         Simpan
                     </Button>
                 </DialogActions>
             </Dialog>
-            {showBackToTop && (
-                <ToTopButton showBackToTop={showBackToTop} />
-            )}
+            {
+                showBackToTop && (
+                    <ToTopButton showBackToTop={showBackToTop} />
+                )
+            }
+            <SubmitMenuUpdate isMobile={isMobile} />
             <Footer menuCategory={menuCategory} footerRefs={footerRefs} handleScrollToCategory={handleScrollToCategory} selectedCategory={selectedCategory}></Footer>
         </Box >
     )

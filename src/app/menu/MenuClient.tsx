@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, createRef } from "react"
 import { Autocomplete, Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
-import { MenuCard, menuData } from "../../database/page"
+import { MenuCard } from "../../database/page"
 import { useSearchParams } from "next/navigation"
 import Footer from "@/components/footer"
 import ToTopButton from "@/components/to-top-button"
