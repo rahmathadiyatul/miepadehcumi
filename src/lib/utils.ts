@@ -3,10 +3,10 @@ import { twMerge } from "tailwind-merge"
 import { Octokit } from "octokit"
 import { MenuCategory } from "@/database/page"
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN
-const OWNER = "rahmathadiyatul"
-const REPO = "miepadehcumi"
-const FILE_PATH = "public/admin/data/menu.json"
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN!
+const OWNER = process.env.OWNER!
+const REPO = process.env.REPO!
+const FILE_PATH = process.env.FILE_PATH!
 const BRANCH = 'master'
 
 export function cn(...inputs: ClassValue[]) {
