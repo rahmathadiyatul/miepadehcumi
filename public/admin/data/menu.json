@@ -18,7 +18,7 @@
           "url": "",
           "price": 20000,
           "description": "Deskripsi pendek makanan",
-          "is_active": true
+          "is_active": false
         },
         {
           "menuId": 3,
