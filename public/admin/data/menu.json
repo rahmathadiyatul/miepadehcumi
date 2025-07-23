@@ -39,8 +39,8 @@
         {
           "menuId": 5,
           "title": "Mie Mix Seafood",
-          "url": "#",
-          "price": 0,
+          "url": "https://res.cloudinary.com/dxyxg3egs/image/upload/v1753286945/MiePadehCumi/iwcjblxrcu4hbz6kzbzy.jpg",
+          "price": 20000,
           "description": "Deskripsi pendek makanan",
           "is_active": true
         }
