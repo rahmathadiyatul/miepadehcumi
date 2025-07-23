@@ -11,7 +11,7 @@ import SubmitMenuUpdate from "@/components/submit-menu-update"
 
 export default function MenuEditorClient() {
     const { selectedMenuName, isMobile } = useSidebar()
-    const { menuCategory: initialCats, setMenuTrigger, menuTrigger } = useMenuData()
+    const { menuCategory: initialCats, setMenuTrigger, menuTrigger } = useMenuData(true)
     const [isUploading, setIsUploading] = useState<boolean>(false)
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
     const [editItem, setEditItem] = useState<MenuCard | null>(null)
