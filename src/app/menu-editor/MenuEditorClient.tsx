@@ -1,17 +1,18 @@
 'use client'
-import { Autocomplete, Box, Button, Card, CardContent, CardMedia, Dialog, DialogTitle, DialogActions, DialogContent, TextField, Typography, FormControlLabel, Switch } from "@mui/material"
+import { Autocomplete, Box, Button, Card, CardContent, CardMedia, Dialog, DialogTitle, DialogActions, DialogContent, TextField, Typography, FormControlLabel, Switch, CircularProgress } from "@mui/material"
 import useMenuData from "../controller/useMenuData"
 import { createRef, useEffect, useMemo, useRef, useState } from "react"
 import { MenuCard, MenuCategory } from "@/database/page"
 import ToTopButton from "@/components/to-top-button"
 import Footer from "@/components/footer"
 import { useSidebar } from "@/components/ui/sidebar"
-import { Cancel, CheckCircle } from "@mui/icons-material"
+import { Cancel, CheckCircle, CloudUpload } from "@mui/icons-material"
 import SubmitMenuUpdate from "@/components/submit-menu-update"
 
 export default function MenuEditorClient() {
     const { selectedMenuName, isMobile } = useSidebar()
     const { menuCategory: initialCats, setMenuTrigger, menuTrigger } = useMenuData()
+    const [isUploading, setIsUploading] = useState<boolean>(false)
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
     const [editItem, setEditItem] = useState<MenuCard | null>(null)
     const [openEdit, setOpenEdit] = useState(false)
@@ -88,6 +89,33 @@ export default function MenuEditorClient() {
                 ref.current?.scrollIntoView({ behavior: "smooth", block: "center" })
                 break
             }
+        }
+    }
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (!file) return
+        setIsUploading(true)
+
+        const form = new FormData()
+        form.append("file", file)
+        form.append("upload_preset", "menu_editor_preset")             // your unsigned preset
+        form.append("folder", "MiePadehCumi")                     // optional
+
+        try {
+            const res = await fetch(
+                "https://api.cloudinary.com/v1_1/dxyxg3egs/image/upload",
+                { method: "POST", body: form }
+            )
+            const json = await res.json()
+            // json.secure_url is your uploaded URL
+            setEditItem(item =>
+                item ? { ...item, url: json.secure_url } : null
+            )
+        } catch (err) {
+            console.error("Cloudinary upload failed", err)
+        } finally {
+            setIsUploading(false)
         }
     }
 
@@ -296,7 +324,8 @@ export default function MenuEditorClient() {
                 PaperProps={{
                     sx: {
                         borderRadius: '10px',
-                        gap: 1
+                        gap: 1,
+                        backgroundColor: "#ffece6",
                     },
                 }}
             >
@@ -308,53 +337,141 @@ export default function MenuEditorClient() {
                         fontSize: 18
                     }}
                 >Edit Menu Item</DialogTitle>
-                <DialogContent>
+                <DialogContent
+                    sx={{
+                        paddingTop: (theme) => theme.spacing(1),
+                        "&.MuiDialogContent-root": {
+                            paddingTop: (theme) => theme.spacing(1),
+                        },
+                        backgroundColor: "#ffece6",
+                        p: 3,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 1.5,
+                    }}
+                >
                     <TextField
                         label="Nama"
                         fullWidth
-                        margin="dense"
+                        variant="outlined"
                         value={editItem?.title || ""}
                         onChange={e =>
                             setEditItem(item =>
                                 item ? { ...item, title: e.target.value } : null
                             )
                         }
+                        InputLabelProps={{ sx: { color: "#b82828", fontWeight: "bold" } }}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "& fieldset": { borderColor: "#b82828" },
+                                "&:hover fieldset": { borderColor: "#fe6b8b" },
+                                "&.Mui-focused fieldset": { borderColor: "#ff8e53" },
+                            },
+                        }}
                     />
+
                     <TextField
                         label="Harga"
                         type="number"
                         fullWidth
-                        margin="dense"
+                        variant="outlined"
                         value={editItem?.price ?? 0}
                         onChange={e =>
                             setEditItem(item =>
                                 item ? { ...item, price: Number(e.target.value) } : null
                             )
                         }
+                        InputLabelProps={{ sx: { color: "#b82828", fontWeight: "bold" } }}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "& fieldset": { borderColor: "#b82828" },
+                                "&:hover fieldset": { borderColor: "#fe6b8b" },
+                                "&.Mui-focused fieldset": { borderColor: "#ff8e53" },
+                            },
+                        }}
                     />
                     <TextField
                         label="Deskripsi"
                         multiline
                         rows={3}
                         fullWidth
-                        margin="dense"
+                        variant="outlined"
                         value={editItem?.description || ""}
                         onChange={e =>
                             setEditItem(item =>
                                 item ? { ...item, description: e.target.value } : null
                             )
                         }
+                        InputLabelProps={{ sx: { color: "#b82828", fontWeight: "bold" } }}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "& fieldset": { borderColor: "#b82828" },
+                                "&:hover fieldset": { borderColor: "#fe6b8b" },
+                                "&.Mui-focused fieldset": { borderColor: "#ff8e53" },
+                            },
+                        }}
                     />
+
+                    <Box sx={{ my: 1, textAlign: "center" }}>
+                        <input
+                            accept="image/*"
+                            id="upload-file"
+                            type="file"
+                            style={{ display: "none" }}
+                            onChange={handleFileChange}
+                            disabled={isUploading}
+                        />
+                        <label htmlFor="upload-file">
+                            <Button
+                                component="span"
+                                startIcon={
+                                    isUploading
+                                        ? <CircularProgress size={20} color="inherit" />
+                                        : <CloudUpload />
+                                }
+                                disabled={isUploading}
+                                sx={{
+                                    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                                    color: "white",
+                                    fontWeight: "bold",
+                                    borderRadius: "8px",
+                                    px: 3,
+                                    py: 1.5,
+                                    boxShadow: "0 3px 5px 2px rgba(255,105,135,.3)",
+                                    textTransform: "none",
+                                    "&:hover": {
+                                        background: "linear-gradient(45deg, #FF8E53 30%, #FE6B8B 90%)",
+                                    },
+                                }}
+                            >
+                                {isUploading ? "Uploading…" : "Upload Gambar"}
+                            </Button>
+                        </label>
+                    </Box>
+
+
                     <TextField
                         label="URL Gambar"
                         fullWidth
-                        margin="dense"
+                        variant="outlined"
                         value={editItem?.url || ""}
                         onChange={e =>
                             setEditItem(item =>
                                 item ? { ...item, url: e.target.value } : null
                             )
                         }
+                        InputLabelProps={{ sx: { color: "#b82828", fontWeight: "bold" } }}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "& fieldset": { borderColor: "#b82828" },
+                                "&:hover fieldset": { borderColor: "#fe6b8b" },
+                                "&.Mui-focused fieldset": { borderColor: "#ff8e53" },
+                            },
+                        }}
                     />
                     <FormControlLabel
                         control={
@@ -363,12 +480,21 @@ export default function MenuEditorClient() {
                                 onChange={e =>
                                     editItem && setEditItem({ ...editItem, is_active: e.target.checked })
                                 }
+                                sx={{
+                                    "& .MuiSwitch-switchBase.Mui-checked": {
+                                        color: "#ff8e53",
+                                    },
+                                    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                                        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                                    },
+                                }}
                             />
                         }
-                        label="Aktif"
-                        sx={{ mt: 1 }}
+                        label={editItem?.is_active ? "Aktif" : "Tidak Aktif"}
+                        sx={{ mt: 1, "& .MuiFormControlLabel-label": { fontWeight: "bold", color: "#b82828" } }}
                     />
                 </DialogContent>
+
                 <DialogActions>
                     <Button
                         sx={{
@@ -394,6 +520,7 @@ export default function MenuEditorClient() {
                             '&:disabled': { backgroundColor: 'rgba(0,0,0,.1)' }
                         }}
                         onClick={handleSaveEdit}
+                        disabled={isUploading}
                     >
                         Simpan
                     </Button>

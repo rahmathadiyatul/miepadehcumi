@@ -30,7 +30,7 @@ export default function Page() {
                         <Breadcrumb className="z-100">
                             <BreadcrumbList>
                                 <BreadcrumbItem>
-                                    <BreadcrumbPage className="font-bold text-xl text-[#fae89f]">Silakan Pilih Menu Kamu</BreadcrumbPage>
+                                    <BreadcrumbPage className="font-bold text-xl text-[#fae89f]">MENU EDITOR</BreadcrumbPage>
                                 </BreadcrumbItem>
                             </BreadcrumbList>
                         </Breadcrumb>

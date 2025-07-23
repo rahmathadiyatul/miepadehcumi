@@ -8,7 +8,9 @@ import {
     DialogTitle,
     DialogContent,
     DialogActions,
-    Button
+    Button,
+    Snackbar,
+    Alert
 } from "@mui/material"
 import { useRouter } from "next/navigation"
 
@@ -18,11 +20,12 @@ interface SubmitMenuUpdateProps {
 
 export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
     const [open, setOpen] = useState(false)
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
     const router = useRouter()
     const onSubmit = async () => {
         const stored = localStorage.getItem("menuCategory")
-        if (!stored) {
-            return alert("Nothing to submit!")
+        if (!stored || JSON.parse(stored).length < 1) {
+            return alert("Tidak terdapat perubahan")
         }
         const navMain = JSON.parse(stored)
 
@@ -38,8 +41,11 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
             return alert("Failed to update menu – see console")
         }
 
-        alert("Menu updated! Rebuild should start shortly.")
-        router.refresh()
+        localStorage.removeItem("menuCategory")
+        setSnackbarOpen(true)
+        setTimeout(() => {
+            router.push("/home")
+        }, 2000)
     }
 
     return (
@@ -87,10 +93,11 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
                         backgroundColor: '#b82828',
                         color: '#fae89f',
                         borderRadius: '10px',
-                        fontSize: 18
+                        fontSize: 18,
+                        fontWeight: 600
                     }}
                 >
-                    KONFIRMASI
+                    Konfirmasi Perubahan
                 </DialogTitle>
                 <DialogContent
                     dividers
@@ -104,7 +111,7 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
                             mb: 1,
                         }}
                     >
-                        <Typography fontSize='normal'>Apakah <b>ICA</b> yakin dengan perubahan yang sudah dibuat? Tekan <b>YAKIN TUAN</b> jika sudah yakin. Tekan batal untuk kembali edit data</Typography>
+                        <Typography textAlign={"center"} fontSize='normal'>Apakah <b>CICA</b> yakin dengan perubahan yang sudah dibuat? <br /><br /> Tekan <b>YAKIN BANG!</b> jika sudah yakin. Tekan batal untuk kembali edit data!</Typography>
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{ px: 3, pb: 2 }}>
@@ -130,16 +137,35 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
                             backgroundColor: '#b82828',
                             color: '#fae89f',
                             borderRadius: '0.75rem',
-                            fontWeight: 'bold',
+                            fontWeight: 600,
                             width: 200,
                             '&:hover': { backgroundColor: '#991f1f' },
                             '&:disabled': { backgroundColor: 'rgba(0,0,0,.1)' }
                         }}
                     >
-                        YAKIN TUAN
+                        YAKIN BANG!
                     </Button>
                 </DialogActions>
             </Dialog>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={4000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+                <Alert
+                    onClose={() => setSnackbarOpen(false)}
+                    severity="success"
+                    variant="filled"
+                    sx={{
+                        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                        color: "#fff",
+                        fontWeight: "bold",
+                    }}
+                >
+                    Menu sedang di‐update… Sebentar lagi kita pindah ke beranda.
+                </Alert>
+            </Snackbar>
         </>
     )
 }
