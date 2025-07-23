@@ -15,10 +15,10 @@
         {
           "menuId": 2,
           "title": "Mie Original",
-          "url": "",
+          "url": "https://res.cloudinary.com/dxyxg3egs/image/upload/v1753252071/MiePadehCumi/e1q8ltsubhutgttwrckt.jpg",
           "price": 20000,
           "description": "Deskripsi pendek makanan",
-          "is_active": false
+          "is_active": true
         },
         {
           "menuId": 3,
