@@ -75,7 +75,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     asChild={!hasChildren}
                   >
                     <a
-                      href={hasChildren ? "#" : item.url}
+                      //href={hasChildren ? "#" : item.url}
                       className="font-medium text-[#fae89f] flex justify-between w-full"
                     >
                       <span>{item.title}</span>
@@ -97,7 +97,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             isActive={subitem.isActive}
                           >
                             <a
-                              href={subitem.url}
+                              //href={subitem.url}
                               style={{ color: "#fae89f" }}
                             >
                               {subitem.title}

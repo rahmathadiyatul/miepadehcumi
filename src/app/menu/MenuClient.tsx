@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState, createRef } from "react"
+import React, { useEffect, useRef, useState, createRef, RefObject } from "react"
 import { Autocomplete, Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
 import { MenuCard } from "../../database/page"
 import { useSearchParams } from "next/navigation"
@@ -22,15 +22,20 @@ export default function MenuClient() {
     const { openMobile, isMobile, selectedMenuName } = useSidebar()
     const searchParams = useSearchParams()
     const tableNumber = searchParams.get("tableNo") || "01"
-    const categoryRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
-    const menuItemRefs = useRef(menuCategory.map(cat => cat.items.map(() => createRef<HTMLDivElement>())))
-    const footerRefs = useRef(menuCategory.map(() => createRef<HTMLDivElement>()))
+    const categoryRefs = useRef<RefObject<HTMLDivElement | null>[]>([])
+    const footerRefs = useRef<RefObject<HTMLDivElement | null>[]>([])
+    const menuItemRefs = useRef<RefObject<HTMLDivElement | null>[][]>([])
     const [showBackToTop, setShowBackToTop] = useState<boolean>(false)
     const [openOrderModal, setOpenOrderModal] = useState<boolean>(false)
     const [activeMenuItem, setActiveMenuItem] = useState<MenuCard | null>(null)
     const [searchText, setSearchText] = useState<string>('')
     const [selectedCategory, setSelectedCategory] = useState(() => {
         return menuCategory?.[0]?.title ?? ""
+    })
+    const [orderData, setOrderData] = useState<OrderData>({
+        quantities: {},
+        notes: {},
+        tableNumber: tableNumber,
     })
 
     const allTitles = menuCategory.flatMap(cat =>
@@ -48,39 +53,27 @@ export default function MenuClient() {
             .filter(cat => cat.items.length > 0)
         : menuCategory
 
-    const [orderData, setOrderData] = useState<OrderData>({
-        quantities: {},
-        notes: {},
-        tableNumber: tableNumber,
-    })
-
     const handleOpenOrderModal = (menu: MenuCard) => {
         setActiveMenuItem(menu)
     }
 
-    const handleScrollToCategory = (categoryName: string, index: number) => {
-        if (categoryRefs.current[index]?.current) {
-            setSelectedCategory(categoryName)
-            categoryRefs.current[index].current.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            })
+    const handleScrollToCategory = (name: string, idx: number) => {
+        const ref = categoryRefs.current[idx]
+        if (ref?.current) {
+            ref.current.scrollIntoView({ behavior: "smooth", block: "start" })
+            setSelectedCategory(name)
         }
     }
 
     const handleScrollToMenuItem = (menuName: string) => {
-        for (let catIdx = 0; catIdx < menuCategory.length; catIdx++) {
-            const itemIdx = menuCategory[catIdx].items.findIndex(
-                (i) => i.title === menuName
-            )
-            if (itemIdx !== -1) {
-                setSelectedCategory(menuCategory[catIdx].title)
-                categoryRefs.current[catIdx]?.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                })
-                const ref = menuItemRefs.current[catIdx][itemIdx]
-                ref.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+        for (let ci = 0; ci < menuCategory.length; ci++) {
+            const ii = menuCategory[ci].items.findIndex(i => i.title === menuName)
+            if (ii !== -1) {
+                const catRef = categoryRefs.current[ci]
+                catRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                const itemRef = menuItemRefs.current[ci][ii]
+                itemRef?.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+                setSelectedCategory(menuCategory[ci].title)
                 break
             }
         }
@@ -105,6 +98,14 @@ export default function MenuClient() {
         const encoded = encodeURIComponent(message)
         window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank")
     }
+
+    useEffect(() => {
+        categoryRefs.current = menuCategory.map(() => createRef())
+        footerRefs.current = menuCategory.map(() => createRef())
+        menuItemRefs.current = menuCategory.map(cat =>
+            cat.items.map(() => createRef())
+        )
+    }, [menuCategory])
 
     useEffect(() => {
         if (activeMenuItem) {
@@ -132,48 +133,31 @@ export default function MenuClient() {
     }, [selectedMenuName])
 
     useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5,
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const index = categoryRefs.current.findIndex((ref) => ref.current === entry.target)
-                    if (index !== -1) {
-                        setSelectedCategory(menuCategory[index].title)
-                    }
+        const onScroll = () => {
+            for (let i = 0; i < categoryRefs.current.length; i++) {
+                const el = categoryRefs.current[i].current
+                if (!el) continue
+                const { top } = el.getBoundingClientRect()
+                if (top >= 0 && top < 100) {
+                    setSelectedCategory(menuCategory[i].title)
+                    break
                 }
-            })
-        }, observerOptions)
-
-        categoryRefs.current.forEach((ref) => {
-            if (ref.current) {
-                observer.observe(ref.current)
             }
-        })
-
-        return () => {
-            categoryRefs.current.forEach((ref) => {
-                if (ref.current) {
-                    observer.unobserve(ref.current)
-                }
-            })
         }
-    }, [])
+        window.addEventListener("scroll", onScroll, { passive: true })
+        return () => window.removeEventListener("scroll", onScroll)
+    }, [menuCategory])
 
     useEffect(() => {
-        const index = menuCategory.findIndex((cat) => cat.title === selectedCategory)
-        if (index !== -1 && footerRefs.current[index]?.current) {
-            footerRefs.current[index].current.scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center',
-                block: 'nearest',
+        const idx = menuCategory.findIndex((c) => c.title === selectedCategory)
+        if (idx !== -1 && footerRefs.current[idx]?.current) {
+            footerRefs.current[idx].current.scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest",
             })
         }
-    }, [selectedCategory])
+    }, [selectedCategory, menuCategory])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -230,7 +214,7 @@ export default function MenuClient() {
                     )}
                 />
                 {(filteredCategories ?? []).map((category, index) => (
-                    <Box key={index} ref={categoryRefs.current[index]} sx={{ mt: 1, mb: 4, scrollMarginTop: { xs: "7vh", md: 0 } }}>
+                    <Box key={index} ref={categoryRefs.current[index]} sx={{ mt: 1, mb: 4, scrollMarginTop: { xs: "14vh", md: 0 } }}>
                         <Typography
                             textTransform="uppercase"
                             color="#b82828"

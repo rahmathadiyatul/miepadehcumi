@@ -45,7 +45,7 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
         setSnackbarOpen(true)
         setTimeout(() => {
             router.push("/home")
-        }, 2000)
+        }, 15000)
     }
 
     return (
@@ -149,7 +149,7 @@ export default function SubmitMenuUpdate({ isMobile }: SubmitMenuUpdateProps) {
             </Dialog>
             <Snackbar
                 open={snackbarOpen}
-                autoHideDuration={4000}
+                autoHideDuration={15000}
                 onClose={() => setSnackbarOpen(false)}
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
             >
