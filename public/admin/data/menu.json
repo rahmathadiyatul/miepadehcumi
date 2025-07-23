@@ -7,16 +7,16 @@
         {
           "menuId": 1,
           "title": "Mie Udang Saus Padang",
-          "url": "#",
           "price": 10000,
-          "description": "Mie dengan udang",
-          "is_active": true
+          "description": "Deskripsi pendek makanan",
+          "is_active": true,
+          "url": "https://res.cloudinary.com/dxyxg3egs/image/upload/v1753250064/MiePadehCumi/iuw3lkl0lwotadlhzlmk.jpg"
         },
         {
           "menuId": 2,
           "title": "Mie Original",
-          "url": "#",
-          "price": 0,
+          "url": "",
+          "price": 20000,
           "description": "Deskripsi pendek makanan",
           "is_active": true
         },
