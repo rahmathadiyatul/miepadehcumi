@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import type { MenuCategory, MenuCard } from "@/database/page"
+import type { MenuCategory, MenuData } from "@/database/page"
+
+const NETLIFY_BASE_URL = process.env.NETLIFY_BASE_URL
 
 export default function useMenuData(isEditor = false) {
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
@@ -11,7 +13,6 @@ export default function useMenuData(isEditor = false) {
         const load = async () => {
             let cats: MenuCategory[] = []
 
-            // Attempt to load from localStorage
             const stored = localStorage.getItem("menuCategory")
             if (stored) {
                 try {
@@ -24,35 +25,17 @@ export default function useMenuData(isEditor = false) {
                 }
             }
 
-            // If no cached data, fetch from Netlify Function
             if (!cats.length) {
                 try {
-                    const res = await fetch("https://miepadehcumi.netlify.app/.netlify/functions/getMenu")
+                    const res = await fetch(`${NETLIFY_BASE_URL}/.netlify/functions/getMenu`)
                     if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`)
-                    console.log("Fetching menu data from Netlify Function", res)
-                    const items: MenuCard[] = await res.json()
-
-                    // Group items by category_id
-                    const map = new Map<number, MenuCategory>()
-
-                    for (const item of items) {
-                        const cat = map.get(item.category_id) || {
-                            id: item.category_id,
-                            name: `Category ${item.category_id}`, // You may want to fetch real category names
-                            items: [],
-                        }
-                        // cat.items.push(item)
-                        // map.set(item.category_id, cat)
-                    }
-
-                    cats = Array.from(map.values())
-                    localStorage.setItem("menuCategory", JSON.stringify(cats))
+                    const data: MenuData = await res.json()
+                    cats = data.navMain
                 } catch (err) {
                     console.error("useMenuData:", err)
                 }
             }
 
-            // Filter inactive items if not in editor mode
             if (!isEditor) {
                 cats = cats
                     .map(cat => ({
