@@ -1,0 +1,35 @@
+import { Handler } from "@netlify/functions"
+import { createClient } from "@supabase/supabase-js"
+
+const supabase = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_ANON_KEY!
+)
+
+const handler: Handler = async () => {
+    try {
+        const { data, error } = await supabase
+            .from("menu")
+            .select(`id, title, price, description, is_active, url, category_id`)
+            .eq("is_active", true)
+        console.log("Fetched menu data:", data)
+        if (error) {
+            return {
+                statusCode: 500,
+                body: JSON.stringify({ message: error.message }),
+            }
+        }
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data),
+        }
+    } catch (err: any) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: err.message }),
+        }
+    }
+}
+
+export { handler }
