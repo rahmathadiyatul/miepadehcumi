@@ -41,8 +41,8 @@ export default function useMenuData(isEditor = false) {
                             name: `Category ${item.category_id}`, // You may want to fetch real category names
                             items: [],
                         }
-                        cat.items.push(item)
-                        map.set(item.category_id, cat)
+                        // cat.items.push(item)
+                        // map.set(item.category_id, cat)
                     }
 
                     cats = Array.from(map.values())
