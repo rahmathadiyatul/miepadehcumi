@@ -10,19 +10,26 @@ const handler: Handler = async () => {
     try {
         const { data, error } = await supabase
             .from("menu")
-            .select(`id, title, price, description, is_active, url, category_id`)
+            .select("id, title, price, description, is_active, url, category_id")
             .eq("is_active", true)
+
         if (error) {
             console.error("Supabase query error:", error)
-        }
-        console.log(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, "THIS IS THE ENV")
-        console.log("Fetched menu data:", data)
-        if (error) {
             return {
                 statusCode: 500,
                 body: JSON.stringify({ message: error.message }),
             }
         }
+
+        const mappedData = data?.map((item) => ({
+            menuId: item.id,
+            title: item.title,
+            price: item.price,
+            description: item.description,
+            is_active: item.is_active,
+            url: item.url,
+            category_id: item.category_id,
+        }))
 
         return {
             statusCode: 200,
@@ -30,7 +37,7 @@ const handler: Handler = async () => {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "Content-Type",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(mappedData),
         }
     } catch (err: any) {
         return {
