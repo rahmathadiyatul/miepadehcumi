@@ -6,6 +6,7 @@ export interface MenuCard {
     url?: string,
     is_active?: boolean,
     isActive?: boolean,
+    category_id: number,
 }
 
 export interface MenuCategory {
