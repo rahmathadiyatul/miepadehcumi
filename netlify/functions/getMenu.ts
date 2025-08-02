@@ -12,6 +12,10 @@ const handler: Handler = async () => {
             .from("menu")
             .select(`id, title, price, description, is_active, url, category_id`)
             .eq("is_active", true)
+        if (error) {
+            console.error("Supabase query error:", error)
+        }
+        console.log(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, "THIS IS THE ENV")
         console.log("Fetched menu data:", data)
         if (error) {
             return {
