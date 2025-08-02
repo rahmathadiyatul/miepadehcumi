@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import type { MenuCategory, MenuData } from "@/database/page"
 
-const NETLIFY_BASE_URL = process.env.NETLIFY_BASE_URL
+const NETLIFY_BASE_URL = process.env.NEXT_PUBLIC_NETLIFY_BASE_URL
 
 export default function useMenuData(isEditor = false) {
     const [menuCategory, setMenuCategory] = useState<MenuCategory[]>([])
