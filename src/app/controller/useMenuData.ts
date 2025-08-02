@@ -30,7 +30,11 @@ export default function useMenuData(isEditor = false) {
                     const res = await fetch(`${NETLIFY_BASE_URL}/.netlify/functions/getMenu`)
                     if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`)
                     const data: MenuData = await res.json()
-                    cats = data.navMain
+                    const sortedCats: MenuCategory[] = data.navMain.map((category) => ({
+                        ...category,
+                        menuItems: category.items.sort((a, b) => a.menuId - b.menuId)
+                    }))
+                    cats = sortedCats
                 } catch (err) {
                     console.error("useMenuData:", err)
                 }

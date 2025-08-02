@@ -21,7 +21,6 @@ const handler: Handler = async () => {
             }
         }
 
-        // Group menu items by category
         const grouped = new Map<number, {
             title: string
             url: string
